@@ -2,3 +2,4 @@
 /vendor/
 /src/*.solution
 /.idea/
+/bin/*
