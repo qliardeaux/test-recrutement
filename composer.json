@@ -1,0 +1,23 @@
+{
+    "name": "mathieu/test-recrutement",
+    "authors": [
+        {
+            "name": "Mathieu",
+            "email": "mathieu.louvel@mindid.fr"
+        }
+    ],
+    "require": {
+        "php": "^7.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7"
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    }
+}
