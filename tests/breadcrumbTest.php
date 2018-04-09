@@ -309,4 +309,113 @@ final class breadcrumbTest extends TestCase
             ]
         );
     }
+
+    public function testBreadcrumbNoFind(): void
+    {
+        $menu = [
+            [
+                'name' => 'Home',
+                'child' => [
+                    [
+                        'name' => 'Contact',
+                        'child' => [],
+                    ],
+                    [
+                        'name' => 'Account',
+                        'child' => [
+                            [
+                                'name' => 'Edit account',
+                                'child' => [],
+                            ],
+                            [
+                                'name' => 'Edit password',
+                                'child' => [],
+                            ],
+                            [
+                                'name' => 'Logout',
+                                'child' => [],
+                            ],
+                        ],
+                    ],
+                    [
+                        'name' => 'Order',
+                        'valid' => false,
+                        'child' => [
+                            [
+                                'name' => 'New order',
+                                'child' => [],
+                            ],
+                            [
+                                'name' => 'My order',
+                                'child' => [
+                                    [
+                                        'name' => 'Order detail',
+                                        'child' => [],
+                                    ],
+                                    [
+                                        'name' => 'Delete order',
+                                        'child' => [],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                    [
+                        'name' => 'Order',
+                        'valid' => false,
+                        'child' => [
+                            [
+                                'name' => 'New order',
+                                'child' => [],
+                            ],
+                            [
+                                'name' => 'My order',
+                                'child' => [
+                                    [
+                                        'name' => 'Order detail',
+                                        'child' => [
+                                            [
+                                                'name' => 'Bills',
+                                                'child' => [
+                                                    [
+                                                        'name' => 'Download bills',
+                                                        'child' => [],
+                                                    ],
+                                                ],
+                                            ],
+                                            [
+                                                'name' => 'Purchase order',
+                                                'child' => [
+                                                    [
+                                                        'name' => 'Download purchase order',
+                                                        'child' => [],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                    [
+                                        'name' => 'Delete order',
+                                        'child' => [],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ];
+
+        $breadcrumb = new Breadcrumb();
+        $breadcrumb->setMenu($menu);
+	$empty_array = [];
+
+        $this->assertEquals(
+            $breadcrumb->getBreadcrumb('test'), NULL);
+	$this->assertEquals(
+		$breadcrumb->getBreadcrumb('Delete false'), NULL);
+	$this->assertEquals(
+		$breadcrumb->getBreadcrumb($empty_array), NULL);
+    }
 }
+?>
